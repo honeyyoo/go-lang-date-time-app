@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: datetime-app
+spec:
+  replicas: 2  # Run 2 copies (pods)
+  selector:
+    matchLabels:
+      app: datetime
+  template:
+    metadata:
+      labels:
+        app: datetime
+    spec:
+      containers:
+       - name: datetime-container
+         image: suprithasekar/go-lang-date-time-app  # Your DockerHub image
+         ports:
+           - containerPort: 8080
